@@ -6,9 +6,9 @@ import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
+import com.hephaestus.http.HttpMethodInvoker;
 import com.hephaestus.http.invokers.DeleteMethodInvoker;
 import com.hephaestus.http.invokers.GetMethodInvoker;
-import com.hephaestus.http.invokers.HttpMethodInvoker;
 import com.hephaestus.http.invokers.PostMethodInvoker;
 import com.hephaestus.http.invokers.PutMethodInvoker;
 

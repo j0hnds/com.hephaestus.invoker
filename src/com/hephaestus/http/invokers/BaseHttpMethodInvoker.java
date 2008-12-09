@@ -17,8 +17,9 @@ import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
 
 import com.hephaestus.invoker.message.Messages;
+import com.hephaestus.http.HTTPViewData;
+import com.hephaestus.http.HttpMethodInvoker;
 import com.hephaestus.http.Protocols;
-import com.hephaestus.http.views.HTTPViewData;
 import com.hephaestus.util.NumberUtils;
 
 /**

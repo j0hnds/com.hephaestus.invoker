@@ -15,7 +15,7 @@ import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.util.EncodingUtil;
 
-import com.hephaestus.http.views.HTTPViewData;
+import com.hephaestus.http.HTTPViewData;
 
 /**
  * This class extends the functionality of the BaseHttpMethodInvoker to provide
