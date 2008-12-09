@@ -23,6 +23,7 @@ public class Activator extends Plugin {
 	// The shared instance
 	private static Activator plugin;
 	
+	// The service registration objects for the services we expose.
 	private ServiceRegistration srGet;
 	private ServiceRegistration srPost;
 	private ServiceRegistration srPut;
@@ -45,6 +46,11 @@ public class Activator extends Plugin {
 		registerServices(context);
 	}
 
+	/**
+	 * Helper method to perform the registration of our services.
+	 * 
+	 * @param context the bundle context
+	 */
 	private void registerServices(BundleContext context) {
 		// Instantiate an instance of the service
 		HttpMethodInvoker getInvoker = new GetMethodInvoker();
@@ -52,21 +58,27 @@ public class Activator extends Plugin {
 		HttpMethodInvoker putInvoker = new PutMethodInvoker();
 		HttpMethodInvoker deleteInvoker = new DeleteMethodInvoker();
 		
-		Hashtable<String,String> getProperties = new Hashtable<String,String>();
-		getProperties.put("METHOD", "GET");
-		srGet = context.registerService(HttpMethodInvoker.class.getName(), getInvoker, getProperties);
+		srGet = context.registerService(HttpMethodInvoker.class.getName(), getInvoker, createMethodProperties("GET"));
 		
-		Hashtable<String,String> postProperties = new Hashtable<String,String>();
-		postProperties.put("METHOD", "POST");
-		srPost = context.registerService(HttpMethodInvoker.class.getName(), postInvoker, postProperties);
+		srPost = context.registerService(HttpMethodInvoker.class.getName(), postInvoker, createMethodProperties("POST"));
 		
-		Hashtable<String,String> putProperties = new Hashtable<String,String>();
-		putProperties.put("METHOD", "PUT");
-		srPut = context.registerService(HttpMethodInvoker.class.getName(), putInvoker, putProperties);
+		srPut = context.registerService(HttpMethodInvoker.class.getName(), putInvoker, createMethodProperties("PUT"));
 		
-		Hashtable<String,String> deleteProperties = new Hashtable<String,String>();
-		deleteProperties.put("METHOD", "DELETE");
-		srDelete = context.registerService(HttpMethodInvoker.class.getName(), deleteInvoker, deleteProperties);
+		srDelete = context.registerService(HttpMethodInvoker.class.getName(), deleteInvoker, createMethodProperties("DELETE"));
+	}
+
+	/**
+	 * Helper method to construct the property map for an invoker method.
+	 * 
+	 * @param methodName the name of the method to register.
+	 * 
+	 * @return ref to a hash table for the invoker properties.
+	 */
+	private Hashtable<String,String> createMethodProperties(String methodName) {
+		Hashtable<String,String> props = new Hashtable<String,String>();
+		props.put("METHOD", methodName);
+		
+		return props;
 	}
 
 	/*
