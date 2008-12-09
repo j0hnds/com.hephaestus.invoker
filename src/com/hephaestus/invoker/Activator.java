@@ -18,7 +18,7 @@ import com.hephaestus.http.invokers.PutMethodInvoker;
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "com.hephaestus.invoker";
+	public static final String PLUGIN_ID = "com.hephaestus.invoker"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
@@ -58,13 +58,13 @@ public class Activator extends Plugin {
 		HttpMethodInvoker putInvoker = new PutMethodInvoker();
 		HttpMethodInvoker deleteInvoker = new DeleteMethodInvoker();
 		
-		srGet = context.registerService(HttpMethodInvoker.class.getName(), getInvoker, createMethodProperties("GET"));
+		srGet = context.registerService(HttpMethodInvoker.class.getName(), getInvoker, createMethodProperties("GET")); //$NON-NLS-1$
 		
-		srPost = context.registerService(HttpMethodInvoker.class.getName(), postInvoker, createMethodProperties("POST"));
+		srPost = context.registerService(HttpMethodInvoker.class.getName(), postInvoker, createMethodProperties("POST")); //$NON-NLS-1$
 		
-		srPut = context.registerService(HttpMethodInvoker.class.getName(), putInvoker, createMethodProperties("PUT"));
+		srPut = context.registerService(HttpMethodInvoker.class.getName(), putInvoker, createMethodProperties("PUT")); //$NON-NLS-1$
 		
-		srDelete = context.registerService(HttpMethodInvoker.class.getName(), deleteInvoker, createMethodProperties("DELETE"));
+		srDelete = context.registerService(HttpMethodInvoker.class.getName(), deleteInvoker, createMethodProperties("DELETE")); //$NON-NLS-1$
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class Activator extends Plugin {
 	 */
 	private Hashtable<String,String> createMethodProperties(String methodName) {
 		Hashtable<String,String> props = new Hashtable<String,String>();
-		props.put("METHOD", methodName);
+		props.put("METHOD", methodName); //$NON-NLS-1$
 		
 		return props;
 	}
