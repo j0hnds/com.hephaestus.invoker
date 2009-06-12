@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
 import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
 
@@ -107,6 +108,9 @@ public abstract class BaseHttpMethodInvoker implements HttpMethodInvoker, Protoc
 	 */
 	protected HttpClient getClient(HTTPViewData viewData) {
 		HttpClient client = new HttpClient();
+		HttpConnectionManagerParams params = client.getHttpConnectionManager().getParams();
+		params.setConnectionTimeout(viewData.getConnectionTimeout());
+        params.setSoTimeout(viewData.getSocketTimeout());
 		String proxy = viewData.getProxyHostPort();
 		if (proxy != null && proxy.length() > 0) {
 			String[] cmps = proxy.split(":"); //$NON-NLS-1$

@@ -220,4 +220,22 @@ public interface HTTPViewData {
 	 * self-signed certificates or domain mismatch on certificates.
 	 */
 	boolean isStrictSSL();
+	
+	/**
+	 * Returns the connection timeout (milliseconds) to use for the 
+	 * http connection.
+	 *
+	 * @return connection timeout in milliseconds. 0 indicates that no
+	 * timeout is used. 
+	 */
+	int getConnectionTimeout();
+
+	/**
+     * Returns the socket timeout (milliseconds) to use for the 
+     * http connection.
+     *
+     * @return socket timeout in milliseconds. 0 indicates that no
+     * timeout is used. 
+     */
+    int getSocketTimeout();
 }
